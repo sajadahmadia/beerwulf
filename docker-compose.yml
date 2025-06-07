@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_DB: bearwulf
+      POSTGRES_PASSWORD: pgadmin_bear
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
