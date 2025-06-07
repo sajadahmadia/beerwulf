@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: landing_zone
+    schema: landing_zone
+    tables:
+      - name: region
+        description: "raw REGION data"
+      - name: nation
+        description: "raw NATION data"
+      - name: part
+        description: "raw PART data"
+      - name: supplier
+        description: "raw SUPPLIER data"
+      - name: partsupp
+        description: "raw PARTSUPP data"
+      - name: customer
+        description: "raw CUSTOMER data"
+      - name: orders
+        description: "raw ORDERS data"
+      - name: lineitem
+        description: "raw LINEITEM data"
