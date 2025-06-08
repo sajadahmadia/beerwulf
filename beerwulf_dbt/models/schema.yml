@@ -1,23 +1,24 @@
-version: 1
+version: 2
 
 models:
   - name: src_region
     columns:
+      - name: region_key
+        tests:
+          - unique
+          - not_null
 
-     - name: region_key
-       tests:
-         - unique
-         - not_null
   - name: src_nation
     columns:
-    - name: nation_key
-      tests:
-        - unique
-        - not_null
-    - name: region_key
-      tests:
-        - relationships:
-              to: ref('nation')
+      - name: nation_key
+        tests:
+          - unique
+          - not_null
+
+      - name: region_key
+        tests:
+          - relationships:
+              to: ref('src_region')
               field: region_key
 
   - name: src_part
@@ -44,15 +45,22 @@ models:
           - not_null
       - name: nation_key
         tests:
-          - not_null
+          - relationships:
+              to: ref('src_nation')
+              field: nation_key
+
   - name: src_partsupp
     columns:
       - name: part_key
         tests:
-          - not_null
+          - relationships:
+              to: ref('src_part')
+              field: part_key
       - name: supplier_key
         tests:
-          - not_null
+          - relationships:
+              to: ref('src_supplier')
+              field: supplier_key
 
   - name: src_customer
     columns:
@@ -62,7 +70,9 @@ models:
           - not_null
       - name: nation_key
         tests:
-          - not_null
+          - relationships:
+              to: ref('src_nation')
+              field: nation_key
 
   - name: src_orders
     columns:
@@ -72,27 +82,24 @@ models:
           - not_null
       - name: customer_key
         tests:
-          - not_null
           - relationships:
               to: ref('src_customer')
               field: customer_key
+
   - name: src_lineitem
     columns:
       - name: order_key
         tests:
-          - not_null
           - relationships:
               to: ref('src_orders')
               field: order_key
       - name: part_key
         tests:
-          - not_null
           - relationships:
               to: ref('src_part')
               field: part_key
       - name: supplier_key
         tests:
-          - not_null
           - relationships:
               to: ref('src_supplier')
               field: supplier_key
