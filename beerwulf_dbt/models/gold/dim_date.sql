@@ -3,35 +3,35 @@
     materialized='table'
 ) }}
 
-with
+WITH
 --min and max date values across the lineitem and order date columns
-date_bounds as (
-  select
-    min(order_date)     as min_dt,
-    max(order_date)     as max_dt
-  from {{ ref('orders') }}
+date_bounds AS (
+  SELECT
+    MIN(order_date)     as min_dt,
+    MAX(order_date)     as max_dt
+  FROM {{ ref('orders') }}
 
-  union all 
+  UNION ALL 
 
-  select
-    min(ship_date)      as min_dt,
-    max(receipt_date)   as max_dt
-  from {{ ref('lineitem') }}
+  SELECT
+    MIN(ship_date)      as min_dt,
+    MAX(receipt_date)   as max_dt
+  FROM {{ ref('lineitem') }}
 ),
 
 -- min and max date across both tables
 bounds as (
-  select
+  SELECT
     min(min_dt) as start_date,
     max(max_dt) as end_date
-  from date_bounds
+  FROM date_bounds
 ),
 
 -- start from start date and generate +1 days up to the end dates
-date_spine as (
-  select
-    generate_series(start_date, end_date, interval '1 day')::date as date_day
-  from bounds
+date_spine AS (
+  SELECT
+    CAST(generate_series(start_date, end_date, interval '1 day') AS DATE) as date_day
+  FROM bounds
 )
 
 select CAST(to_char(date_day, 'YYYYMMDD') as integer) as date_key,

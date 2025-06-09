@@ -12,14 +12,13 @@
 SELECT 
     o.order_key,
     o.customer_key,
-    TO_CHAR(o.order_date, 'YYYYMMDD')::INTEGER AS date_key,
+    CAST(TO_CHAR(o.order_date, 'YYYYMMDD') AS INTEGER) AS date_key,
     o.total_price,
     o.order_status,
     o.priority_code,
     o.priority_label,
     o.clerk,
     o.ship_priority,
-    -- Aggregations from line items
     COUNT(l.line_number) AS line_count,
     COUNT(DISTINCT l.part_key) AS unique_parts_count,
     COUNT(DISTINCT l.supplier_key) AS unique_suppliers_count,

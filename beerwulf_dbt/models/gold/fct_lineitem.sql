@@ -14,7 +14,6 @@ SELECT
     {{ dbt_utils.generate_surrogate_key(['l.order_key', 'l.line_number']) }} AS lineitem_key,
     l.order_key,
     l.line_number,
-    --the line item does'nt have the customer key, we access it via the orders table
     o.customer_key, 
     l.part_key,
     l.supplier_key,

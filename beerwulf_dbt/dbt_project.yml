@@ -17,7 +17,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-docs-paths: ["docs"]
+asset-paths : ["assets"]
 
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
@@ -41,4 +41,7 @@ models:
       +materialized: table
     gold:
       +schema: gold
+      +materialized: table
+    gold:
+      +schema: marts
       +materialized: table

@@ -9,6 +9,7 @@ SELECT c.customer_key,
     c.phone AS customer_phone,
     c.account_balance AS customer_account_balance,
     c.market_segment AS customer_market_segment,
+    c.account_balance_segment AS customer_account_balance_segment,
     c.comment,
     n.name AS nation_name,
     r.name AS region_name
