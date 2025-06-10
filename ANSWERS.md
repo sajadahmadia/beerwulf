@@ -23,7 +23,7 @@ Below, you can find the answers and instructions regarding my implementation of 
         * initdb/00-create-schemas.sql: creates schemas 
         * initdb/01-ingestion_zone_ddl.sql: ddl scripts, with relaxed (loosened) schema, to make the ingestion process more resilient, allowing raw data to be loaded even when it doesn’t fully conform to strict types or constraints.
         * notice that based on the HOW_TO_RUN.md, I've made some shell scripts (in the `shell_scripts` directory) that run the mentioned load scripts automatically. scripts are re-runable, so you can run it as many times as you want with affecting the final results.
-        * ERD file of the final model is provided at this path `beerwulf_dbt/assets/gold_schema_erd.png`. It will also render in the first page of the dbt documentation server when you run it. ![star schema](/assets/gold_schema_erd.png) 
+        * ERD file of the final model is provided at this path `beerwulf_dbt/assets/gold_schema_erd.png`. It will also render in the first page of the dbt documentation server when you run it. ![star schema](https://github.com/sajadahmadia/beerwulf/blob/main/beerwulf_dbt/assets/gold_schema_erd.png)
 
     **Extra** point: 
     - define a classification: I used percentiles classification (33 and 67 as bounderies) based on customers' account balance. It's provided as a new field in the gold.dim_customer('customer_account_balance_segment')
