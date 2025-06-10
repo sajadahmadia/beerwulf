@@ -1,0 +1,50 @@
+.
+├── ANSWERS.md
+├── HOW_TO_RUN.md
+├── README.md
+├── beerwulf_dbt
+│   ├── README.md
+│   ├── analyses
+│   ├── assets
+│   ├── dbt_packages
+│   ├── dbt_project.yml
+│   ├── macros
+│   ├── models
+│   ├── package-lock.yml
+│   ├── packages.yml
+│   ├── seeds
+│   ├── snapshots
+│   ├── target
+│   └── tests
+├── data
+│   ├── customer.tbl
+│   ├── data_clean
+│   ├── lineitem.tbl
+│   ├── nation.tbl
+│   ├── orders.tbl
+│   ├── part.tbl
+│   ├── partsupp.tbl
+│   ├── region.tbl
+│   └── supplier.tbl
+├── data.zip
+├── docker-compose.yml
+├── docs
+│   ├── dbt-graph.png
+│   ├── dbt-server.png
+│   └── gold_schema_erd.png
+├── image.png
+├── initdb
+│   ├── 00-create-schemas.sql
+│   ├── 01-ingestion_zone_ddl.sql
+│   └── ddl.sql
+├── logs
+├── requirements.txt
+├── shell_scripts
+│   ├── 00_create_schemas.sh
+│   ├── 01_create_landing_zone_tables.sh
+│   ├── 02_remove_trailer.sh
+│   ├── 03_import_table_data.sh
+│   ├── 04_assertion_row_counts.sh
+│   ├── 05_create_dbt_profile.sh
+│   └── tempCodeRunnerFile.sh
+└── structure.txt
