@@ -9,7 +9,7 @@ WITH customer_percentiles AS (
     FROM {{ ref('src_customer') }}
 )
 
-SELECT 
+SELECT DISTINCT
     c.customer_key,
     c.name,
     c.address,

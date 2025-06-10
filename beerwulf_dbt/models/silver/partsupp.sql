@@ -2,7 +2,7 @@
     schema='silver'
 ) }}
 
-SELECT 
+SELECT DISTINCT
     part_key,
     supplier_key,
     avail_qty AS available_quantity,

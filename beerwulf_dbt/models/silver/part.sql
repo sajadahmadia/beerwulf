@@ -2,7 +2,7 @@
     schema='silver'
 ) }}
 
-SELECT 
+SELECT DISTINCT
     part_key,
     name,
     manufacturer_name,

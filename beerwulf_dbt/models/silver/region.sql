@@ -2,7 +2,7 @@
     schema='silver'
 ) }}
 
-SELECT 
+SELECT DISTINCT
     region_key,
     name,
     comment

@@ -18,8 +18,8 @@ WITH top_nations AS (
 SELECT 
     l.ship_mode AS top_shipment_method,
     COUNT(*) as shipment_count
-FROM gold.fct_lineitem l
-INNER JOIN gold.dim_customer c ON l.customer_key = c.customer_key
+FROM {{ref('fct_lineitem')}} l
+INNER JOIN {{ref('dim_customer')}} c ON l.customer_key = c.customer_key
 WHERE c.nation_name IN (SELECT nation_name FROM top_nations)
 GROUP BY l.ship_mode
 ORDER BY shipment_count DESC

@@ -1,6 +1,6 @@
 
 --here, i added 5 new row-wise calculated columns, and a simple data cleaning in the where clause
-SELECT 
+SELECT DISTINCT
     order_key,
     part_key,
     supplier_key,
@@ -17,7 +17,7 @@ SELECT
     ship_instruct,
     ship_mode,
     comment,
-    --new columns, 5
+    -- 5 new columns
     extended_price * discount AS discount_amount,
     extended_price * (1 - discount) AS revenue,
     extended_price * (1 - discount) * tax AS tax_amount,

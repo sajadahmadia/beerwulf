@@ -1,5 +1,5 @@
 
-SELECT 
+SELECT DISTINCT
     order_key,
     customer_key,
     order_status,

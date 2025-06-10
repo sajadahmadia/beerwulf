@@ -2,7 +2,7 @@
     schema='silver'
 ) }}
 
-SELECT 
+SELECT DISTINCT
     nation_key,
     name,
     region_key,

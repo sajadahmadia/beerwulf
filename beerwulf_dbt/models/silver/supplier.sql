@@ -2,7 +2,7 @@
     schema='silver'
 ) }}
 
-SELECT 
+SELECT DISTINCT
     supplier_key,
     name,
     address,
