@@ -5,14 +5,16 @@ models:
     columns:
       - name: region_key
         tests:
-          - unique
+          - unique:
+              tags: ['critical']
           - not_null
 
   - name: src_nation
     columns:
       - name: nation_key
         tests:
-          - unique
+          - unique:
+              tags: ['primary_key']
           - not_null
 
       - name: region_key
@@ -205,3 +207,8 @@ models:
         tests:
           - unique
           - not_null
+  - name: lineitem
+    columns:
+      - name: discount
+        tests:
+          - col_max_threshold

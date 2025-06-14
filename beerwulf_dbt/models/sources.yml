@@ -20,3 +20,13 @@ sources:
         description: "raw ORDERS data"
       - name: lineitem
         description: "raw LINEITEM data"
+  - name: seeds
+    schema: seeds
+    tables:
+      - name: user_events_mock_enriched
+        identifier: user_events_mock_enriched
+        loaded_at_field: ingestion_timestamp
+        freshness:
+          warn_after: {count: 1, period: minute}
+          error_after: {count: 5, period: minute}
+
