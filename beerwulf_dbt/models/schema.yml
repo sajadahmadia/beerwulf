@@ -181,6 +181,7 @@ models:
           - not_null
 
   - name: dim_customer
+    description: a dimension talbe showing customer attributes
     columns:
       - name: customer_key
         tests:
@@ -195,6 +196,7 @@ models:
           - not_null
 
   - name: dim_supplier
+    description: '{{ doc("some_words_about_dim_suppliers") }}'
     columns:
       - name: supplier_key
         tests:
@@ -211,4 +213,6 @@ models:
     columns:
       - name: discount
         tests:
-          - col_max_threshold
+        - col_max_threshold:
+            threshold: 2
+            severity: warn

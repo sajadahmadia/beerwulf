@@ -1,3 +1,3 @@
 SELECT *
 FROM {{ref('lineitem')}}
-WHERE discount > 1 
+WHERE quantity < 1 
