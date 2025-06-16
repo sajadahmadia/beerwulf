@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: seeds
+    schema: seeds
+    tables:
+      - name: user_events_mock_enriched
+        description: 'users enriched data with the ingestion_timestamp'
+        identifier: user_events_mock_enriched
+        loaded_at_field: ingestion_timestamp
