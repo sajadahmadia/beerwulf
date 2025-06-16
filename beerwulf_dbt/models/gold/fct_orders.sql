@@ -6,6 +6,13 @@
         {'columns': ['customer_key']},
         {'columns': ['date_key']},
         {'columns': ['order_status']}
+    ],
+    post_hook=[
+        "create or replace view bearwulf.gold.orders_view_urgent_only as 
+        select *
+        from {{this}}
+        where priority_label = 'URGENT'
+        limit 100; "
     ]
 ) }}
 
