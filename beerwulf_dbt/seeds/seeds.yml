@@ -1,10 +1,11 @@
 version: 2
 
 seeds:
-  - name: seeds
-    schema: seeds
-    tables:
-      - name: user_events_mock_enriched
-        description: 'users enriched data with the ingestion_timestamp'
-        identifier: user_events_mock_enriched
-        loaded_at_field: ingestion_timestamp
+  - name: user_events_mock_enriched
+    description: 'users enriched data with the ingestion_timestamp'
+    config:
+      tags: seed_table
+      post-hook: "create or replace view experiments.users_view as 
+                  select user_id from seeds.user_events_mock_enriched
+                  limit 20;"
+
