@@ -6,6 +6,10 @@ sources:
     tables:
       - name: region
         description: "raw REGION data"
+        columns:
+        - name: r_regionkey
+          tests:
+            - dbt_expectations.expect_column_to_exist
       - name: nation
         description: "raw NATION data"
       - name: part

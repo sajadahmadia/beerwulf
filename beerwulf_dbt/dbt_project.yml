@@ -23,6 +23,9 @@ seeds:
   beerwulf_dbt:
     +schema: seeds
 
+on-run-end: 
+  - "{{ log_dbt_results(results) }}"
+
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
