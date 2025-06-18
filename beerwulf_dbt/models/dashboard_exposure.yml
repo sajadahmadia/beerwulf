@@ -1,0 +1,17 @@
+version: 2
+
+exposures:
+  - name: github_project
+    label: github
+    type: application
+    maturity: low
+    url: https://github.com/sajadahmadia/beerwulf
+    description: sample exposure link
+
+    depends_on:
+      - ref('fct_orders')
+      - ref('fct_lineitem')
+
+    owner:
+      name: Sajad Ahmadi
+      email: sajadahmadi#a24@gmail.com
