@@ -14,3 +14,4 @@ SELECT
     retail_price part_retail_price,
     comment part_comment
 FROM {{ ref('part') }}
+
