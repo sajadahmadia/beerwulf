@@ -28,3 +28,5 @@ FROM {{ ref('src_lineitem') }}
 --here, row-wise cleaning 
 WHERE quantity > 0 
 and ship_date < receipt_date
+and extract(year from ship_date) = '{{ var("p_year") }}'
+limit {{var("num_records",7)}}
