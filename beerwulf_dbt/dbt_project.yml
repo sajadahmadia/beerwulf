@@ -24,7 +24,8 @@ seeds:
     +schema: seeds
 
 on-run-end: 
-  - "{{ log_dbt_results(results) }}"
+  - "{{ log_dbt_results(results) }}" 
+  - "{{ dbt_artifacts.upload_results(results) }}"
 
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
