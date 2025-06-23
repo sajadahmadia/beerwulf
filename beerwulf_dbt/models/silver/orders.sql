@@ -1,6 +1,14 @@
+{{
+    config(
+        materialized= 'incremental',
+        on_schema_change='fail'
+
+    )
+}}
 
 SELECT DISTINCT
     order_key,
+    current_timestamp as ingestion_timestamp,
     customer_key,
     order_status,
     total_price,
@@ -22,3 +30,13 @@ SELECT DISTINCT
     comment
 FROM {{ ref('src_orders') }}
 WHERE total_price > 0  -- row-wise cleaning
+{% if is_incremental() %}
+    {% if var("start_year",False) and var("end_year",False) %}
+    {{ log('Loading ' ~ this ~ ' incrementally (start_date: ' ~ var("start_year") ~ ', end_date: ' ~ var("end_year") ~ ')', info=True) }}
+    AND extract(year from order_date) >= '{{ var("start_year") }}'
+    AND extract(year from order_date) <= '{{ var("end_year") }}'
+{% else %}
+AND order_date > (select max(order_date) from {{this}})
+    {{ log('Loading ' ~ this ~ ' incrementally while no boundries is provided', info=True)}}
+  {% endif %}
+{% endif %}

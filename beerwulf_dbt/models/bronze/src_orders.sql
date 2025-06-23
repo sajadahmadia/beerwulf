@@ -9,3 +9,4 @@ SELECT
   CAST(O_SHIPPRIORITY AS INTEGER)  AS ship_priority,
   O_COMMENT                        AS comment
 FROM {{ source('landing_zone','orders') }}
+where extract(year from CAST(O_ORDERDATE     AS DATE)) in ('1992','1993','1994','1995') 
